@@ -1,6 +1,6 @@
 {
   "name": "@senodroom/slangmath",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "🎯 Advanced Symbolic Mathematics with Comprehensive LaTeX Conversion & Extended Function Support",
   "main": "slang-math.js",
   "directories": {
