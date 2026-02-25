@@ -1,6 +1,6 @@
 {
   "name": "slangmath",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "🎯 **Advanced Symbolic Mathematics with Comprehensive LaTeX Conversion & Extended Function Support**",
   "main": "slang-math.js",
   "directories": {
