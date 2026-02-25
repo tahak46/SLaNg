@@ -1,4 +1,8 @@
-# 📚 SLaNg Math Library
+<p align="center">
+  <img src="logo.png" alt="SLaNg Math Library Logo" width="200"/>
+  <h1 align="center">SLaNg Math Library</h1>
+</p>
+
 
 ### Saad's Language for Analytical Numerics and Geometry
 
