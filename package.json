@@ -2,7 +2,7 @@
   "name": "slangmath",
   "version": "1.0.2",
   "description": "🎯 **Advanced Symbolic Mathematics with Comprehensive LaTeX Conversion & Extended Function Support**",
-  "main": "slang-advanced.js",
+  "main": "slang-math.js",
   "directories": {
     "test": "tests"
   },
