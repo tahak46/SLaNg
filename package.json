@@ -1,13 +1,10 @@
 {
-  "name": "@senodroom/slangmath",
+  "name": "slangmath",
   "version": "1.0.6",
-  "description": "🎯 Advanced Symbolic Mathematics with Comprehensive LaTeX Conversion & Extended Function Support",
-  "main": "slang-math.js",
+  "description": "🎯 **Advanced Symbolic Mathematics with Comprehensive LaTeX Conversion & Extended Function Support**",
+  "main": "slang-advanced.js",
   "directories": {
     "test": "tests"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -29,14 +29,33 @@ echo "🔢 New version: $NEW_VERSION"
 
 # Set up GitHub Packages authentication
 echo "🔐 Setting up GitHub Packages authentication..."
-npm config set //npm.pkg.github.com/:_authToken $GITHUB_TOKEN
+if [ -n "$GITHUB_TOKEN" ]; then
+    npm config set //npm.pkg.github.com/:_authToken $GITHUB_TOKEN
+elif [ -n "$env:GITHUB_TOKEN" ]; then
+    npm config set //npm.pkg.github.com/:_authToken $env:GITHUB_TOKEN
+else
+    echo "❌ Error: GITHUB_TOKEN environment variable not set"
+    echo "Please set it with: export GITHUB_TOKEN=your_token (Linux/Mac)"
+    echo "or: $env:GITHUB_TOKEN='your_token' (PowerShell)"
+    exit 1
+fi
 
 # Publish to npm (if configured)
-if [ -n "$NPM_TOKEN" ]; then
+if [ -n "$NPM_TOKEN" ] || [ -n "$env:NPM_TOKEN" ]; then
     echo "📤 Publishing to npm..."
-    npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
-    npm publish
-    echo "✅ Published to npm: @senodroom/slangmath@$NEW_VERSION"
+    if [ -n "$NPM_TOKEN" ]; then
+        npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
+    else
+        npm config set //registry.npmjs.org/:_authToken $env:NPM_TOKEN
+    fi
+    
+    # Temporarily update package name for npm (use npm username scope)
+    ORIGINAL_NAME=$(node -p "require('./package.json').name")
+    npm pkg set name="@muhammadsaadamin/slangmath"
+    npm publish --access=public --registry https://registry.npmjs.org
+    npm pkg set name="$ORIGINAL_NAME"
+    
+    echo "✅ Published to npm: @muhammadsaadamin/slangmath@$NEW_VERSION"
 else
     echo "⚠️  NPM_TOKEN not set, skipping npm publish"
 fi
@@ -52,5 +71,5 @@ git push origin main
 git push origin --tags
 
 echo "🎉 Publishing complete!"
-echo "📦 npm: @senodroom/slangmath@$NEW_VERSION"
+echo "📦 npm: @muhammadsaadamin/slang-math@$NEW_VERSION"
 echo "📦 GitHub Packages: @senodroom/slangmath@$NEW_VERSION"
