@@ -1,3 +1,9 @@
+/**
+ * SLaNg Math Module
+ * Central export point for all SLaNg mathematical functions
+ */
+
+// Export all functions from other modules
 export * from "./slang-basic.js";
 export * from "./slang-advanced.js";
 export * from "./slang-helpers.js";
