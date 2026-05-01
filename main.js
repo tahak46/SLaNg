@@ -1,10 +1,10 @@
 import { spawnSync } from 'child_process';
 import { 
-    parseExpr,      // M Aqib's math extractor
-    symDiff,        // M Aqib's derivative solver
-    symIntegrate,   // M Aqib's integral solver
-    symSimplify,    // M Aqib's math simplifier
-    symToLatex      // M Aqib's text formatter
+    parseExpr,      
+    symDiff,        
+    symIntegrate,  
+    symSimplify,   
+    symToLatex      
 } from './slang-math.js'; 
 
 export function runSlangPipeline(userSlangInput) {
@@ -12,7 +12,7 @@ export function runSlangPipeline(userSlangInput) {
         
         const mathString = userSlangInput.replace(/[a-zA-Z\s]+(of|find|the)\s+/ig, '').trim();
         
-        // Step 2: Predict intent (Habiba/Ikram's Python model)
+       
         let intent = ""; 
         try {
             const pythonProcess = spawnSync('python', ['predict.py', userSlangInput], { encoding: 'utf-8' });
@@ -23,10 +23,10 @@ export function runSlangPipeline(userSlangInput) {
             
         }
         
-        // Step 3: Parse Expression (M Aqib's task)
+        
         const mathAst = parseExpr(mathString);
         
-        // Step 4: Solve the Math (M Aqib's task)
+        
         let solvedAst;
         const lowerInput = userSlangInput.toLowerCase(); 
         
@@ -41,7 +41,7 @@ export function runSlangPipeline(userSlangInput) {
         
         const simplifiedAst = symSimplify(solvedAst);
         
-        // Step 6: Convert back to standard text (Jahanzaib / M Aqib's task)
+        
         let rawResult = symToLatex(simplifiedAst);
         
         
