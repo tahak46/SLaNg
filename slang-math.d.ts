@@ -8,7 +8,7 @@ export interface Fraction {
     deno: number | { terms: Term[] };
 }
 
-// Function Signatures [cite: 51]
+// Function Signatures
 export function createTerm(coeff: number, vars?: Record<string, number>): Term;
 export function createFraction(numiTerms: Term[], denoTerms: number | Term[]): Fraction;
 export function differentiateFraction(frac: Fraction, variable: string): Fraction;
@@ -22,3 +22,4 @@ export function gradient(expr: any, vars: string[]): any;
 export function hessian(expr: any, vars: string[]): any;
 export function lagrangeMultipliers(f: any, g: any, vars: string[]): any;
 export function tangentPlane(expr: any, point: Record<string, number>): any;
+export function tangentLine(poly: any, point: number): any;
